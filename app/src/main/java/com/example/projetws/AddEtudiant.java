@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -79,6 +80,7 @@ public class AddEtudiant extends AppCompatActivity implements View.OnClickListen
         f = findViewById(R.id.f);
         img.setOnClickListener(this);
         remove.setOnClickListener(this);
+        remove.setScaleType(ImageView.ScaleType.FIT_CENTER);
         add.setOnClickListener(this);
 
 
