@@ -59,6 +59,7 @@ public class AddEtudiant extends AppCompatActivity implements View.OnClickListen
     private RadioButton m;
     private RadioButton f;
     private Button add;
+    private Button affichage;
     private Bitmap bitmap = null;
     private String link = "android.resource://com.example.projetws/drawable/avatar";
     RequestQueue requestQueue;
@@ -75,14 +76,14 @@ public class AddEtudiant extends AppCompatActivity implements View.OnClickListen
         prenom = findViewById(R.id.prenom);
         ville = findViewById(R.id.ville);
         add = findViewById(R.id.add);
-
+        affichage = findViewById(R.id.afficher);
         m = findViewById(R.id.m);
         f = findViewById(R.id.f);
         img.setOnClickListener(this);
         remove.setOnClickListener(this);
         remove.setScaleType(ImageView.ScaleType.FIT_CENTER);
         add.setOnClickListener(this);
-
+        affichage.setOnClickListener(this);
 
     }
 
@@ -132,11 +133,16 @@ public class AddEtudiant extends AppCompatActivity implements View.OnClickListen
                     params.put("prenom", prenom.getText().toString());
                     params.put("ville", ville.getSelectedItem().toString());
                     params.put("sexe", sexe);
+                  //  params.put("img", img);
                     String stringImg = null;
                     if(bitmap != null) {
+                        Log.d("mzian","bitmap machi null");
+
                         stringImg = getStringImage(bitmap);
+                        Log.d("bitmapAch",stringImg);
                         params.put("img", stringImg);
                     }else {
+                        Log.d("erreura","bitmap null");
                         params.put("img", "no");
                     }
 
@@ -144,6 +150,9 @@ public class AddEtudiant extends AppCompatActivity implements View.OnClickListen
                 }
             };
             requestQueue.add(request);
+          //  startActivity(new Intent(AddEtudiant.this, AffichageActivity.class));
+        }
+        if(v == affichage) {
             startActivity(new Intent(AddEtudiant.this, AffichageActivity.class));
         }
 
